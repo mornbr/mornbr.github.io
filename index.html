@@ -1,26 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
-    <title>부트스트랩 개론 견본</title>
+    <meta charset="UTF-8">
+    <title>개발자 김씨 - 소개 페이지</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 부트스트랩 -->
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        background: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #888;
+      }
+      .skills-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .skills-list .badge {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+    </style>
   </head>
   <body>
-    <h1>헬로우, 월드!</h1>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">개발자 김씨</a>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <!-- 프로필 섹션 -->
+      <div class="text-center mb-4">
+        <div class="profile-img mx-auto mb-3">
+          <span>👨‍💻</span>
+        </div>
+        <h2>개발자 김씨</h2>
+        <p class="lead">안드로이드 개발자</p>
+      </div>
+
+      <!-- 기술 스택 -->
+      <div class="mb-5">
+        <h4 class="text-center mb-3">기술 스택</h4>
+        <div class="skills-list">
+          <span class="badge bg-success">Android</span>
+          <span class="badge bg-warning text-dark">Java</span>
+          <span class="badge bg-info text-dark">Kotlin</span>
+          <span class="badge bg-secondary">Firebase</span>
+          <span class="badge bg-dark">Git</span>
+        </div>
+      </div>
+
+      <!-- 프로젝트 예시 -->
+      <div class="mb-5">
+        <h4 class="text-center mb-3">프로젝트</h4>
+        <div class="row justify-content-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Todo 앱</h5>
+                <p class="card-text">간단한 할 일 관리 앱. MVVM 아키텍처와 Room DB 사용.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">날씨 앱</h5>
+                <p class="card-text">OpenWeatherMap API를 활용한 실시간 날씨 정보 제공 앱.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center text-muted py-4">
+      © 2024 개발자 김씨
+    </footer>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <div class="page-header">
-        <h1>Buttons</h1>
-      </div>
-      <p>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
-      </p>
   </body>
 </html>
