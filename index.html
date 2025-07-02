@@ -92,9 +92,15 @@
     </div>
 
     <div class="text-center mb-3">
-      <a href="https://github.com/mornbr/mornbr.github.io" target="_blank" rel="noopener" class="btn btn-outline-dark">
-        GitHub에서 소스코드 보기
-      </a>
+      <button id="github-link-btn" class="btn btn-outline-dark">GitHub에서 소스코드 보기</button>
+    </div>
+    <!-- 안내 팝업 -->
+    <div id="github-modal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.18); z-index:1050; align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.12); max-width:320px; margin:auto; padding:28px 18px 18px 18px; text-align:center;">
+        <div style="font-weight:600; font-size:1.08rem; color:#222; margin-bottom:10px;">해당 버튼을 클릭하면<br>GitHub 저장소로 이동합니다.</div>
+        <div style="font-size:0.97rem; color:#666; margin-bottom:22px;">확인을 누르면 새 창에서 이동합니다.</div>
+        <button id="github-modal-ok" style="width:100%; background:#4f56ff; color:#fff; border:none; border-radius:999px; padding:10px 0; font-size:1rem; font-weight:500; cursor:pointer;">확인</button>
+      </div>
     </div>
     <footer class="text-center text-muted py-4">
       © 2024 개발자 김씨
@@ -102,5 +108,20 @@
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      // 팝업 열기
+      document.getElementById('github-link-btn').onclick = function() {
+        document.getElementById('github-modal').style.display = 'flex';
+      };
+      // 팝업 확인 버튼
+      document.getElementById('github-modal-ok').onclick = function() {
+        window.open('https://github.com/mornbr/mornbr.github.io', '_blank', 'noopener');
+        document.getElementById('github-modal').style.display = 'none';
+      };
+      // 팝업 바깥 클릭 시 닫기
+      document.getElementById('github-modal').onclick = function(e) {
+        if (e.target === this) this.style.display = 'none';
+      };
+    </script>
   </body>
 </html>
