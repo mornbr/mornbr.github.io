@@ -33,6 +33,76 @@
         font-size: 1rem;
         padding: 10px 16px;
       }
+
+      /* --- Custom Button Styles --- */
+      .btn-custom-gradient {
+        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+      .btn-custom-gradient:hover, .btn-custom-gradient:focus {
+        color: white;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        background-image: linear-gradient(to right, #7a22db 0%, #3585fc 100%);
+      }
+
+      .btn-modal-confirm {
+        background-color: #2575fc; /* Primary color from gradient */
+        color: white;
+        border: none;
+        border-radius: 20px; /* Slightly less rounded than main button */
+        padding: 10px 24px;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+        width: 100%; /* Maintain full width as per original */
+        cursor: pointer; /* Ensure cursor changes */
+      }
+      .btn-modal-confirm:hover, .btn-modal-confirm:focus {
+        background-color: #1565c0; /* Darker shade for hover */
+        color: white;
+      }
+
+      /* GitHub Modal Styles (migrated from inline) */
+      .github-modal-overlay {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.25); /* Slightly darker overlay */
+        z-index: 1050;
+        align-items: center;
+        justify-content: center;
+      }
+      .github-modal-content {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 6px 28px rgba(0,0,0,0.15); /* Enhanced shadow */
+        max-width: 340px; /* Slightly wider */
+        margin: auto;
+        padding: 30px 25px 25px 25px; /* Adjusted padding */
+        text-align: center;
+      }
+      .github-modal-title {
+        font-weight: 600;
+        font-size: 1.15rem; /* Larger title */
+        color: #333; /* Darker text */
+        margin-bottom: 12px;
+      }
+      .github-modal-text {
+        font-size: 1rem; /* Larger text */
+        color: #555; /* Darker text */
+        margin-bottom: 25px;
+      }
+
     </style>
   </head>
   <body>
@@ -92,14 +162,14 @@
     </div>
 
     <div class="text-center mb-3">
-      <button id="github-link-btn" class="btn btn-outline-dark">GitHub에서 소스코드 보기</button>
+      <button id="github-link-btn" class="btn btn-custom-gradient">GitHub에서 소스코드 보기</button>
     </div>
     <!-- 안내 팝업 -->
-    <div id="github-modal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.18); z-index:1050; align-items:center; justify-content:center;">
-      <div style="background:#fff; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.12); max-width:320px; margin:auto; padding:28px 18px 18px 18px; text-align:center;">
-        <div style="font-weight:600; font-size:1.08rem; color:#222; margin-bottom:10px;">해당 버튼을 클릭하면<br>GitHub 저장소로 이동합니다.</div>
-        <div style="font-size:0.97rem; color:#666; margin-bottom:22px;">확인을 누르면 새 창에서 이동합니다.</div>
-        <button id="github-modal-ok" style="width:100%; background:#4f56ff; color:#fff; border:none; border-radius:999px; padding:10px 0; font-size:1rem; font-weight:500; cursor:pointer;">확인</button>
+    <div id="github-modal" class="github-modal-overlay">
+      <div class="github-modal-content">
+        <div class="github-modal-title">GitHub 저장소 이동</div>
+        <div class="github-modal-text">버튼을 클릭하면 GitHub 저장소로<br>새 창에서 이동합니다.</div>
+        <button id="github-modal-ok" class="btn-modal-confirm">확인</button>
       </div>
     </div>
     <footer class="text-center text-muted py-4">
