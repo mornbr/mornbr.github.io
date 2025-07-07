@@ -3,107 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>개발자 김씨 - 소개 페이지</title>
+    <meta name="description" content="안드로이드 개발자 김씨의 기술 스택과 프로젝트를 소개하는 개인 포트폴리오 웹사이트입니다.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 부트스트랩 -->
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style>
-      .profile-img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        background: #eee;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        color: #888;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .skills-list {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 30px;
-      }
-      .skills-list .badge {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
-
-      /* --- Custom Button Styles --- */
-      .btn-custom-gradient {
-        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 25px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        font-weight: 500;
-      }
-      .btn-custom-gradient:hover, .btn-custom-gradient:focus {
-        color: white;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
-        background-image: linear-gradient(to right, #7a22db 0%, #3585fc 100%);
-      }
-
-      .btn-modal-confirm {
-        background-color: #2575fc; /* Primary color from gradient */
-        color: white;
-        border: none;
-        border-radius: 20px; /* Slightly less rounded than main button */
-        padding: 10px 24px;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.2s ease;
-        width: 100%; /* Maintain full width as per original */
-        cursor: pointer; /* Ensure cursor changes */
-      }
-      .btn-modal-confirm:hover, .btn-modal-confirm:focus {
-        background-color: #1565c0; /* Darker shade for hover */
-        color: white;
-      }
-
-      /* GitHub Modal Styles (migrated from inline) */
-      .github-modal-overlay {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.25); /* Slightly darker overlay */
-        z-index: 1050;
-        align-items: center;
-        justify-content: center;
-      }
-      .github-modal-content {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 6px 28px rgba(0,0,0,0.15); /* Enhanced shadow */
-        max-width: 340px; /* Slightly wider */
-        margin: auto;
-        padding: 30px 25px 25px 25px; /* Adjusted padding */
-        text-align: center;
-      }
-      .github-modal-title {
-        font-weight: 600;
-        font-size: 1.15rem; /* Larger title */
-        color: #333; /* Darker text */
-        margin-bottom: 12px;
-      }
-      .github-modal-text {
-        font-size: 1rem; /* Larger text */
-        color: #555; /* Darker text */
-        margin-bottom: 25px;
-      }
-
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <!-- 네비게이션 바 -->
@@ -113,53 +18,53 @@
       </div>
     </nav>
 
-    <div class="container mt-5">
+    <main class="container mt-5">
       <!-- 프로필 섹션 -->
-      <div class="text-center mb-4">
+      <section id="profile" class="text-center mb-4">
         <div class="d-flex justify-content-center mb-3">
           <div class="profile-img">
-            <span>👨‍💻</span>
+            <span role="img" aria-label="개발자 프로필 아이콘">👨‍💻</span>
           </div>
         </div>
         <h2>개발자 김씨</h2>
         <p class="lead">안드로이드 개발자</p>
-      </div>
+      </section>
 
       <!-- 기술 스택 -->
-      <div class="mb-5">
+      <section id="skills" class="mb-5">
         <h4 class="text-center mb-3">기술 스택</h4>
         <div class="skills-list">
-          <a href="https://developer.android.com/" class="badge bg-success text-decoration-none" target="_blank" rel="noopener">Android</a>
-          <a href="https://www.java.com/" class="badge bg-warning text-dark text-decoration-none" target="_blank" rel="noopener">Java</a>
-          <a href="https://kotlinlang.org/" class="badge bg-info text-dark text-decoration-none" target="_blank" rel="noopener">Kotlin</a>
-          <a href="https://firebase.google.com/" class="badge bg-secondary text-decoration-none" target="_blank" rel="noopener">Firebase</a>
-          <a href="https://git-scm.com/" class="badge bg-dark text-decoration-none" target="_blank" rel="noopener">Git</a>
+          <a href="https://developer.android.com/" class="badge bg-success text-decoration-none" target="_blank" rel="noopener" aria-label="Android 공식 문서 (새 창에서 열림)">Android</a>
+          <a href="https://www.java.com/" class="badge bg-warning text-dark text-decoration-none" target="_blank" rel="noopener" aria-label="Java 공식 문서 (새 창에서 열림)">Java</a>
+          <a href="https://kotlinlang.org/" class="badge bg-info text-dark text-decoration-none" target="_blank" rel="noopener" aria-label="Kotlin 공식 문서 (새 창에서 열림)">Kotlin</a>
+          <a href="https://firebase.google.com/" class="badge bg-secondary text-decoration-none" target="_blank" rel="noopener" aria-label="Firebase 공식 문서 (새 창에서 열림)">Firebase</a>
+          <a href="https://git-scm.com/" class="badge bg-dark text-decoration-none" target="_blank" rel="noopener" aria-label="Git 공식 문서 (새 창에서 열림)">Git</a>
         </div>
-      </div>
+      </section>
 
       <!-- 프로젝트 예시 -->
-      <div class="mb-5">
+      <section id="projects" class="mb-5">
         <h4 class="text-center mb-3">프로젝트</h4>
         <div class="row justify-content-center">
-          <div class="col-md-4 mb-4">
+          <article class="col-md-4 mb-4">
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title">Todo 앱</h5>
                 <p class="card-text">간단한 할 일 관리 앱. MVVM 아키텍처와 Room DB 사용.</p>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
+          </article>
+          <article class="col-md-4 mb-4">
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title">날씨 앱</h5>
                 <p class="card-text">OpenWeatherMap API를 활용한 실시간 날씨 정보 제공 앱.</p>
               </div>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <div class="text-center mb-3">
       <button id="github-link-btn" class="btn btn-custom-gradient">GitHub에서 소스코드 보기</button>
@@ -176,7 +81,7 @@
       © 2024 개발자 김씨
     </footer>
 
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script>
       // 팝업 열기
