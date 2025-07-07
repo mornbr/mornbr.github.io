@@ -1,16 +1,70 @@
+:root {
+  /* Theme Colors */
+  --primary-color: #007bff; /* Bootstrap primary blue, can be overridden */
+  --secondary-color: #6c757d; /* Bootstrap secondary gray */
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --text-muted-color: #6c757d; /* For footer text */
+  --link-color: #007bff;
+
+  /* Component Specific Colors */
+  --navbar-bg-color: #343a40; /* Default Bootstrap navbar-dark bg-dark */
+  --navbar-text-color: rgba(255, 255, 255, 0.75);
+  --navbar-brand-color: #ffffff;
+
+  --profile-img-bg: #eeeeee;
+  --profile-img-icon-color: #888888;
+
+  --card-bg-color: #ffffff;
+  --card-border-color: #dddddd; /* Assuming cards might have borders */
+  --card-title-color: #333333;
+  --card-text-color: #555555;
+
+  --badge-success-bg: #28a745;
+  --badge-warning-bg: #ffc107;
+  --badge-info-bg: #17a2b8;
+  --badge-secondary-bg: #6c757d; /* Re-using secondary for consistency */
+  --badge-dark-bg: #343a40;   /* Re-using navbar bg for consistency */
+  --badge-text-light: #ffffff;
+  --badge-text-dark: #212529; /* Default dark text for badges like warning */
+
+  --button-gradient-start: #6a11cb;
+  --button-gradient-end: #2575fc;
+  --button-gradient-hover-start: #7a22db;
+  --button-gradient-hover-end: #3585fc;
+  --button-text-color: #ffffff;
+
+  --modal-confirm-bg: var(--button-gradient-end); /* Align with gradient */
+  --modal-confirm-hover-bg: #1565c0; /* Specific darker shade */
+  --modal-overlay-bg: rgba(0,0,0,0.25);
+  --modal-content-bg: #ffffff;
+  --modal-title-color: #333333;
+  --modal-text-color: #555555;
+
+  /* Font Variables (optional for now, but good for theming) */
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 /* Global Styles & Profile */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family-sans-serif);
+}
+
 .profile-img {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 15px;
-  background: #eee;
+  background: var(--profile-img-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  color: #888;
+  color: var(--profile-img-icon-color);
   margin-left: auto;
   margin-right: auto;
 }
@@ -30,8 +84,8 @@
 
 /* --- Custom Button Styles --- */
 .btn-custom-gradient {
-  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-  color: white;
+  background-image: linear-gradient(to right, var(--button-gradient-start) 0%, var(--button-gradient-end) 100%);
+  color: var(--button-text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -40,27 +94,27 @@
   font-weight: 500;
 }
 .btn-custom-gradient:hover, .btn-custom-gradient:focus {
-  color: white;
+  color: var(--button-text-color);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
-  background-image: linear-gradient(to right, #7a22db 0%, #3585fc 100%);
+  background-image: linear-gradient(to right, var(--button-gradient-hover-start) 0%, var(--button-gradient-hover-end) 100%);
 }
 
 .btn-modal-confirm {
-  background-color: #2575fc; /* Primary color from gradient */
-  color: white;
+  background-color: var(--modal-confirm-bg);
+  color: var(--button-text-color);
   border: none;
-  border-radius: 20px; /* Slightly less rounded than main button */
+  border-radius: 20px;
   padding: 10px 24px;
   font-size: 1rem;
   font-weight: 500;
   transition: background-color 0.2s ease;
-  width: 100%; /* Maintain full width as per original */
-  cursor: pointer; /* Ensure cursor changes */
+  width: 100%;
+  cursor: pointer;
 }
 .btn-modal-confirm:hover, .btn-modal-confirm:focus {
-  background-color: #1565c0; /* Darker shade for hover */
-  color: white;
+  background-color: var(--modal-confirm-hover-bg);
+  color: var(--button-text-color);
 }
 
 /* GitHub Modal Styles */
@@ -71,28 +125,82 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.25); /* Slightly darker overlay */
+  background: var(--modal-overlay-bg);
   z-index: 1050;
   align-items: center;
   justify-content: center;
 }
 .github-modal-content {
-  background: #fff;
+  background: var(--modal-content-bg);
   border-radius: 18px;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.15); /* Enhanced shadow */
-  max-width: 340px; /* Slightly wider */
+  box-shadow: 0 6px 28px rgba(0,0,0,0.15); /* Enhanced shadow - not themed for now */
+  max-width: 340px;
   margin: auto;
-  padding: 30px 25px 25px 25px; /* Adjusted padding */
+  padding: 30px 25px 25px 25px;
   text-align: center;
 }
 .github-modal-title {
   font-weight: 600;
-  font-size: 1.15rem; /* Larger title */
-  color: #333; /* Darker text */
+  font-size: 1.15rem;
+  color: var(--modal-title-color);
   margin-bottom: 12px;
 }
 .github-modal-text {
-  font-size: 1rem; /* Larger text */
-  color: #555; /* Darker text */
+  font-size: 1rem;
+  color: var(--modal-text-color);
   margin-bottom: 25px;
+}
+
+/* Footer Styles */
+footer.text-muted {
+  color: var(--text-muted-color) !important; /* Override Bootstrap's .text-muted if needed */
+}
+
+/* Bootstrap Overrides */
+.navbar-dark.bg-primary { /* Assuming .bg-primary is used for navbar */
+  background-color: var(--navbar-bg-color) !important;
+}
+.navbar-dark .navbar-brand {
+  color: var(--navbar-brand-color) !important;
+}
+.navbar-dark .navbar-nav .nav-link { /* Adjust if a different class is used for nav links */
+  color: var(--navbar-text-color) !important;
+}
+
+.card {
+  background-color: var(--card-bg-color) !important;
+  border: 1px solid var(--card-border-color) !important; /* Add border if desired by theme */
+}
+.card-title {
+  color: var(--card-title-color) !important;
+}
+.card-text {
+  color: var(--card-text-color) !important;
+}
+
+/* Badge Overrides - More specific selectors might be needed if these don't take precedence */
+.badge.bg-success {
+  background-color: var(--badge-success-bg) !important;
+  color: var(--badge-text-light) !important;
+}
+.badge.bg-warning {
+  background-color: var(--badge-warning-bg) !important;
+  color: var(--badge-text-dark) !important; /* Warning typically has dark text */
+}
+.badge.bg-info {
+  background-color: var(--badge-info-bg) !important;
+  color: var(--badge-text-light) !important;
+}
+.badge.bg-secondary {
+  background-color: var(--badge-secondary-bg) !important;
+  color: var(--badge-text-light) !important;
+}
+.badge.bg-dark {
+  background-color: var(--badge-dark-bg) !important;
+  color: var(--badge-text-light) !important;
+}
+
+/* Lead text color */
+.lead {
+  color: var(--text-color); /* Or a specific --lead-text-color if defined */
 }
