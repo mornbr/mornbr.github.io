@@ -1,18 +1,118 @@
+:root {
+  /* 8-Bit Theme Variables */
+  --pixel-unit: 2px; /* Base unit for pixel borders/shadows */
+
+  /* Color Palette (Example: NES-like palette) */
+  --background-color: #D0D0D0; /* Light gray background */
+  --text-color: #000000;       /* Black text */
+  --primary-color: #4050A0;    /* Dark Blue for primary elements */
+  --secondary-color: #70A040;  /* Green for secondary elements */
+  --accent-color: #D04040;     /* Red for accents */
+  --ui-border-color: #000000;   /* Black borders for UI elements */
+  --ui-shadow-color: #606060;   /* Dark gray for pixel shadow */
+  --text-on-primary-color: #FFFFFF; /* White text on primary color */
+  --text-on-secondary-color: #FFFFFF; /* White text on secondary color */
+
+  /* Component Specific Colors */
+  --navbar-bg-color: var(--primary-color);
+  --navbar-text-color: var(--text-on-primary-color);
+  --navbar-brand-color: var(--text-on-primary-color);
+
+  --profile-img-bg: var(--secondary-color);
+  --profile-img-icon-color: var(--text-on-secondary-color); /* Assuming icon is text-based */
+
+  --card-bg-color: #B0B0B0; /* Slightly darker gray for cards */
+  --card-border-color: var(--ui-border-color);
+  --card-title-color: var(--text-color);
+  --card-text-color: var(--text-color);
+
+  /* Button variables (will be used for new .btn-8bit style) */
+  --button-bg-color: var(--primary-color);
+  --button-text-color: var(--text-on-primary-color);
+  --button-border-color: var(--ui-border-color);
+  --button-hover-bg-color: var(--accent-color);
+  --button-hover-text-color: var(--text-on-primary-color);
+  --button-shadow-color: var(--ui-shadow-color);
+
+  /* Modal variables */
+  --modal-confirm-bg: var(--secondary-color);
+  --modal-confirm-hover-bg: var(--accent-color);
+  --modal-overlay-bg: rgba(0,0,0,0.5); /* Darker overlay for 8-bit feel */
+  --modal-content-bg: var(--background-color);
+  --modal-border-color: var(--ui-border-color);
+  --modal-title-color: var(--text-color);
+  --modal-text-color: var(--text-color);
+
+  /* Font Variables - Placeholder for an 8-bit font */
+  /* Common free pixel fonts: "Press Start 2P", "Pixelify Sans", "Silkscreen" */
+  /* For now, fallback to monospace for a slightly more "blocky" feel */
+  --font-family-8bit: "Pixelify Sans", "Press Start 2P", monospace;
+  --font-family-sans-serif: var(--font-family-8bit); /* Apply 8-bit font globally for now */
+  --font-family-monospace: var(--font-family-8bit);
+
+  /* Legacy variables (will be phased out or re-purposed) */
+  --text-muted-color: #505050;
+  --link-color: var(--primary-color);
+  --badge-success-bg: var(--secondary-color); /* Example: Map old badges to new theme */
+  --badge-warning-bg: var(--accent-color);
+  --badge-info-bg: var(--primary-color);
+  --badge-secondary-bg: #808080; /* A neutral gray */
+  --badge-dark-bg: #303030;
+  --badge-text-light: var(--text-on-primary-color);
+  --badge-text-dark: var(--text-color);
+  --button-gradient-start: var(--primary-color); /* Remove gradient for 8-bit */
+  --button-gradient-end: var(--primary-color);
+  --button-gradient-hover-start: var(--accent-color);
+  --button-gradient-hover-end: var(--accent-color);
+}
+
 /* Global Styles & Profile */
+html {
+  /* Smoother font rendering for pixel fonts */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: -webkit-optimize-contrast; /* Chrome/Safari */
+  image-rendering: crisp-edges; /* Firefox */
+  image-rendering: pixelated; /* Standard */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family-sans-serif);
+  /* Consider adding a default font size suitable for pixel fonts if needed */
+  margin: 0; /* Ensure no default browser margins */
+}
+
+.container.mt-5 {
+  margin-top: calc(var(--pixel-unit) * 10) !important; /* Adjust main content margin */
+}
+/* Add a general link style for 8-bit theme if not covered by buttons */
+a {
+  color: var(--link-color);
+  text-decoration: underline; /* Classic 8-bit link style */
+}
+a:hover {
+  color: var(--accent-color);
+}
+
+
 .profile-img {
-  width: 120px;
+  width: 120px; /* Consider if this should be multiple of pixel unit */
   height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  background: #eee;
+  object-fit: cover; /* This might not look very 8-bit if image isn't pixelated */
+  border-radius: 0; /* Sharp edges */
+  margin-bottom: calc(var(--pixel-unit) * 7);
+  background: var(--profile-img-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  color: #888;
+  font-size: 2.5rem; /* This will use the 8-bit font */
+  color: var(--profile-img-icon-color);
   margin-left: auto;
   margin-right: auto;
+  border: var(--pixel-unit) solid var(--ui-border-color);
+  box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--ui-shadow-color);
 }
 
 /* Skills List */
@@ -30,8 +130,8 @@
 
 /* --- Custom Button Styles --- */
 .btn-custom-gradient {
-  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-  color: white;
+  background-image: linear-gradient(to right, var(--button-gradient-start) 0%, var(--button-gradient-end) 100%);
+  color: var(--button-text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -40,27 +140,27 @@
   font-weight: 500;
 }
 .btn-custom-gradient:hover, .btn-custom-gradient:focus {
-  color: white;
+  color: var(--button-text-color);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
-  background-image: linear-gradient(to right, #7a22db 0%, #3585fc 100%);
+  background-image: linear-gradient(to right, var(--button-gradient-hover-start) 0%, var(--button-gradient-hover-end) 100%);
 }
 
 .btn-modal-confirm {
-  background-color: #2575fc; /* Primary color from gradient */
-  color: white;
+  background-color: var(--modal-confirm-bg);
+  color: var(--button-text-color);
   border: none;
-  border-radius: 20px; /* Slightly less rounded than main button */
+  border-radius: 20px;
   padding: 10px 24px;
   font-size: 1rem;
   font-weight: 500;
   transition: background-color 0.2s ease;
-  width: 100%; /* Maintain full width as per original */
-  cursor: pointer; /* Ensure cursor changes */
+  width: 100%;
+  cursor: pointer;
 }
 .btn-modal-confirm:hover, .btn-modal-confirm:focus {
-  background-color: #1565c0; /* Darker shade for hover */
-  color: white;
+  background-color: var(--modal-confirm-hover-bg);
+  color: var(--button-text-color);
 }
 
 /* GitHub Modal Styles */
@@ -71,28 +171,157 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.25); /* Slightly darker overlay */
+  background: var(--modal-overlay-bg);
   z-index: 1050;
   align-items: center;
   justify-content: center;
 }
 .github-modal-content {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.15); /* Enhanced shadow */
-  max-width: 340px; /* Slightly wider */
+  background: var(--modal-content-bg);
+  border-radius: 0; /* Sharp edges for 8-bit style */
+  border: var(--pixel-unit) solid var(--modal-border-color);
+  box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--ui-shadow-color); /* 8-bit shadow */
+  max-width: 360px; /* Adjusted width */
   margin: auto;
-  padding: 30px 25px 25px 25px; /* Adjusted padding */
+  padding: calc(var(--pixel-unit) * 8) calc(var(--pixel-unit) * 6); /* Consistent padding */
   text-align: center;
 }
 .github-modal-title {
-  font-weight: 600;
-  font-size: 1.15rem; /* Larger title */
-  color: #333; /* Darker text */
-  margin-bottom: 12px;
+  font-weight: normal; /* Pixel fonts often look better without bold */
+  font-size: 1.25rem; /* Adjust if needed for pixel font */
+  color: var(--modal-title-color);
+  margin-bottom: calc(var(--pixel-unit) * 4);
 }
 .github-modal-text {
-  font-size: 1rem; /* Larger text */
-  color: #555; /* Darker text */
-  margin-bottom: 25px;
+  font-size: 1rem; /* Adjust if needed for pixel font */
+  color: var(--modal-text-color);
+  margin-bottom: calc(var(--pixel-unit) * 6);
+  line-height: 1.4; /* Ensure readability */
+}
+
+/* Footer Styles */
+footer.text-muted {
+  color: var(--text-muted-color) !important;
+  padding-top: calc(var(--pixel-unit) * 6) !important;
+  padding-bottom: calc(var(--pixel-unit) * 6) !important;
+  border-top: var(--pixel-unit) dashed var(--ui-border-color); /* 8-bit style separator */
+  margin-top: calc(var(--pixel-unit) * 10) !important;
+}
+
+/* Bootstrap Overrides */
+.navbar-dark.bg-primary {
+  background-color: var(--navbar-bg-color) !important;
+  border-bottom: var(--pixel-unit) solid var(--ui-border-color); /* 8-bit border */
+}
+.navbar-dark .navbar-brand {
+  color: var(--navbar-brand-color) !important;
+  text-shadow: var(--pixel-unit) var(--pixel-unit) 0 var(--ui-shadow-color); /* 8-bit text shadow */
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--navbar-text-color) !important;
+}
+/* Ensure h2, h4, h5 also use the 8-bit font and text color */
+h2, h4, h5 {
+  font-family: var(--font-family-sans-serif);
+  color: var(--text-color);
+}
+
+.card {
+  background-color: var(--card-bg-color) !important;
+  border: var(--pixel-unit) solid var(--card-border-color) !important;
+  box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--ui-shadow-color); /* 8-bit shadow */
+  border-radius: 0 !important; /* Sharp edges for 8-bit style */
+}
+.card-body {
+  padding: calc(var(--pixel-unit) * 4); /* Consistent padding based on pixel unit */
+}
+.card-title {
+  color: var(--card-title-color) !important;
+  font-size: 1.15rem; /* Adjust size if needed for pixel font */
+}
+.card-text {
+  color: var(--card-text-color) !important;
+  font-size: 0.9rem; /* Adjust size if needed for pixel font */
+}
+
+/* --- 8-bit Button Style --- */
+.btn-8bit {
+  display: inline-block;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: var(--pixel-unit) solid var(--button-border-color);
+  padding: calc(var(--pixel-unit) * 3) calc(var(--pixel-unit) * 5);
+  text-decoration: none;
+  border-radius: 0; /* Sharp edges */
+  box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--button-shadow-color);
+  position: relative; /* For hover effect */
+  transition: transform 0.1s linear, box-shadow 0.1s linear;
+  cursor: pointer;
+  font-family: var(--font-family-8bit); /* Ensure 8-bit font */
+  text-align: center;
+}
+
+.btn-8bit:hover, .btn-8bit:focus {
+  background-color: var(--button-hover-bg-color);
+  color: var(--button-hover-text-color);
+  transform: translate(var(--pixel-unit), var(--pixel-unit));
+  box-shadow: 0px 0px 0px 0px var(--button-shadow-color);
+}
+
+/* Remove default bootstrap button outline on focus for our custom button */
+.btn-8bit:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--pixel-unit) var(--button-hover-bg-color), var(--pixel-unit) var(--pixel-unit) 0px 0px var(--button-shadow-color); /* Custom focus similar to shadow */
+}
+
+/* Ensure the modal confirm button (now .btn-8bit) uses the specific modal confirm colors if needed, or remove if general .btn-8bit is fine */
+/* .github-modal-content .btn-8bit { */
+  /* background-color: var(--modal-confirm-bg); */
+  /* color: var(--button-text-color); */
+/* } */
+/* .github-modal-content .btn-8bit:hover, .github-modal-content .btn-8bit:focus { */
+  /* background-color: var(--modal-confirm-hover-bg); */
+/* } */
+
+/* Replacing old .btn-custom-gradient and .badge styles with .btn-8bit */
+/* Clear out old button styles to avoid conflicts if classes are not removed from HTML yet */
+.btn-custom-gradient, .btn-modal-confirm { display: none !important; } /* Hide old button classes if they still exist */
+
+/* Style for skills list to display new buttons properly */
+.skills-list {
+  /* display: flex; already there */
+  /* gap: 10px; already there */
+  /* flex-wrap: wrap; already there */
+  /* justify-content: center; already there */
+  /* margin-bottom: 30px; already there */
+}
+.skills-list > .btn-8bit { /* Target buttons directly within skills-list */
+  margin: calc(var(--pixel-unit) * 2); /* Add some margin between buttons */
+}
+
+
+/* Badge Overrides - These will be replaced by .btn-8bit for skills */
+.badge.bg-success,
+.badge.bg-warning,
+.badge.bg-info,
+.badge.bg-secondary,
+.badge.bg-dark {
+  /* display: none !important; Temporarily hide if badges are to be completely replaced by buttons */
+  /* Alternatively, style them as 8-bit badges if they are still needed elsewhere */
+  border: var(--pixel-unit) solid var(--ui-border-color);
+  border-radius: 0;
+  padding: calc(var(--pixel-unit) * 2) calc(var(--pixel-unit) * 3);
+  box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--ui-shadow-color);
+  font-family: var(--font-family-8bit);
+}
+.badge.bg-success { background-color: var(--badge-success-bg) !important; color: var(--badge-text-light) !important; }
+.badge.bg-warning { background-color: var(--badge-warning-bg) !important; color: var(--badge-text-dark) !important; }
+.badge.bg-info { background-color: var(--badge-info-bg) !important; color: var(--badge-text-light) !important; }
+.badge.bg-secondary { background-color: var(--badge-secondary-bg) !important; color: var(--badge-text-light) !important; }
+.badge.bg-dark { background-color: var(--badge-dark-bg) !important; color: var(--badge-text-light) !important; }
+
+
+/* Lead text color */
+.lead {
+  color: var(--text-color); /* Or a specific --lead-text-color if defined */
 }
