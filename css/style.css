@@ -50,20 +50,26 @@
   --font-family-sans-serif: var(--font-family-8bit); /* Apply 8-bit font globally for now */
   --font-family-monospace: var(--font-family-8bit);
 
+  /* --- Updated Button Theme Colors for Better Visibility --- */
+  --button-bg-color: var(--accent-color); /* Use Accent (Red) for more visibility */
+  --button-text-color: var(--text-on-primary-color); /* White text */
+  --button-border-color: var(--ui-border-color); /* Black border */
+  --button-hover-bg-color: var(--secondary-color); /* Green for hover */
+  --button-hover-text-color: var(--text-on-secondary-color); /* White text on hover */
+  --button-shadow-color: var(--ui-shadow-color); /* Dark gray shadow */
+
+
   /* Legacy variables (will be phased out or re-purposed) */
   --text-muted-color: #505050;
   --link-color: var(--primary-color);
-  --badge-success-bg: var(--secondary-color); /* Example: Map old badges to new theme */
+  --badge-success-bg: var(--secondary-color);
   --badge-warning-bg: var(--accent-color);
   --badge-info-bg: var(--primary-color);
-  --badge-secondary-bg: #808080; /* A neutral gray */
+  --badge-secondary-bg: #808080;
   --badge-dark-bg: #303030;
   --badge-text-light: var(--text-on-primary-color);
   --badge-text-dark: var(--text-color);
-  --button-gradient-start: var(--primary-color); /* Remove gradient for 8-bit */
-  --button-gradient-end: var(--primary-color);
-  --button-gradient-hover-start: var(--accent-color);
-  --button-gradient-hover-end: var(--accent-color);
+  /* Removed gradient variables as they are not used in 8-bit theme */
 }
 
 /* Global Styles & Profile */
@@ -247,11 +253,11 @@ h2, h4, h5 {
 /* --- 8-bit Button Style --- */
 .btn-8bit {
   display: inline-block;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: var(--pixel-unit) solid var(--button-border-color);
+  background-color: var(--button-bg-color) !important; /* Ensure override */
+  color: var(--button-text-color) !important; /* Ensure override */
+  border: var(--pixel-unit) solid var(--button-border-color) !important; /* Ensure override */
   padding: calc(var(--pixel-unit) * 3) calc(var(--pixel-unit) * 5);
-  text-decoration: none;
+  text-decoration: none !important; /* Ensure override */
   border-radius: 0; /* Sharp edges */
   box-shadow: var(--pixel-unit) var(--pixel-unit) 0px 0px var(--button-shadow-color);
   position: relative; /* For hover effect */
@@ -259,19 +265,33 @@ h2, h4, h5 {
   cursor: pointer;
   font-family: var(--font-family-8bit); /* Ensure 8-bit font */
   text-align: center;
+  background-image: none !important; /* Crucial for Bootstrap override on <button> */
+  /* Slightly larger padding for more presence */
+  padding: calc(var(--pixel-unit) * 3.5) calc(var(--pixel-unit) * 6);
 }
 
 .btn-8bit:hover, .btn-8bit:focus {
-  background-color: var(--button-hover-bg-color);
-  color: var(--button-hover-text-color);
-  transform: translate(var(--pixel-unit), var(--pixel-unit));
+  background-color: var(--button-hover-bg-color) !important;
+  color: var(--button-hover-text-color) !important;
+  border-color: var(--button-border-color) !important;
+  /* Slightly more pronounced movement on hover */
+  transform: translate(calc(var(--pixel-unit) + 1px), calc(var(--pixel-unit) + 1px));
   box-shadow: 0px 0px 0px 0px var(--button-shadow-color);
+  text-decoration: none !important;
 }
+
+/* Active state for a "pressed" feel */
+.btn-8bit:active {
+  transform: translate(calc(var(--pixel-unit) + 1px), calc(var(--pixel-unit) + 1px));
+  box-shadow: inset var(--pixel-unit) var(--pixel-unit) 0px var(--button-shadow-color); /* Inner shadow for pressed feel */
+}
+
 
 /* Remove default bootstrap button outline on focus for our custom button */
 .btn-8bit:focus {
-  outline: none;
-  box-shadow: 0 0 0 var(--pixel-unit) var(--button-hover-bg-color), var(--pixel-unit) var(--pixel-unit) 0px 0px var(--button-shadow-color); /* Custom focus similar to shadow */
+  outline: none !important;
+  /* Custom focus - a slightly different border or brighter shadow */
+  box-shadow: 0 0 0 var(--pixel-unit) var(--button-hover-bg-color), 0px 0px 0px 0px var(--button-shadow-color) !important;
 }
 
 /* Ensure the modal confirm button (now .btn-8bit) uses the specific modal confirm colors if needed, or remove if general .btn-8bit is fine */
